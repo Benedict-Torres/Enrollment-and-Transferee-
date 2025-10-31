@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="transferee.css">
+    <title>Tranferee Page</title>
+</head>
+<body>
+    <div class="container">
+    <h1>Transferee Form</h1>
+    <p>Please fill out all required fields before submitting.</p><hr>
+
+    <form action="" method="post" enctype="multipart/form-data" id="transfereeForm" novalidate>
+        <h3>Personal Information</h3>
+        <label for="fname">First Name *</label>
+        <input type="text" id="fname" name="fname" required>
+
+        <label for="mname">Middle Name *</label>
+        <input type="text" id="mname" name="mname" required placeholder="Optional if student has no middle name">
+
+        <label for="lname">Last Name *</label>
+        <input type="text" id="lname" name="lname" required>
+        
+        <label for="dob">Date of Birth *</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="gender">Gender *</label>
+        <select id="gender" name="gender" required>
+            <option value="" disabled selected>Select your gender:</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Preper not to say</option>
+        </select><hr>
+
+        <h3>Contact and Address information</h3>
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" name="phone" required placeholder="ex. 09548622173" maxlength="11" minlength="11"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57" onpaste="return false">
+
+        <label for="address">Address *</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="city">City *</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="state">State/Province *</label>
+        <input type="text" id="state" name="state" required><hr>
+
+        <h3>Guardian information</h3>
+        <label for="gname">Guardian Name *</label>
+        <input type="text" id="gname" name="gname" required>
+
+        <label for="gphone">Guardian Phone Number *</label>
+        <input type="tel" id="gphone" name="gphone" required placeholder="ex. 09548622173" maxlength="11" minlength="11"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57" onpaste="return false"><hr>
+
+        <h3>Previous School and Academic information</h3>
+        <label for="prev_school">Previous School Name *</label>
+        <input type="text" id="prev_school" name="prev_school" required>
+
+        <label for="prev_course">Previous Course Taken *</label>
+        <input type="text" id="prev_course" name="prev_course" required>
+        
+        <label for="prev_yr_lvl">Previous Year Level *</label>
+        <select id="prev_yr_lvl" name="prev_yr_lvl" required>
+            <option value="" disabled selected>Select previous year level:</option>
+            <option>Freshman - 1st year</option>
+            <option>Sophomore - 2nd year</option>
+            <option>Junior - 3rd year</option>
+            <option>Senior - 4th year</option>
+        </select>
+
+        <label for="units">Units Completed</label>
+        <input type="text" id="units" name="units" minlength="0" required><hr>
+
+        <h3>Form Submission</h3>
+        <label for="tor">Transcript of Records (TOR) *</label>
+        <input type="file" id="tor" name="tor" accept=".pdf,.doc,.docx,.jpeg,.jpg,.png" required>
+
+        <label for="cot">Certificate of Transfer/ Honorable Dissmisal *</label>
+        <input type="file" id="cot" name="cot" accept=".pdf,.doc,.docx,.jpeg,.jpg,.png" required>
+
+        <label for="cogmc">Certificate of Good Moral Character *</label>
+        <input type="file" id="cogmc" name="cogmc" accept=".pdf,.doc,.docx,.jpeg,.jpg,.png" required>
+
+        <label for="birthcert">NSO Birth Certificate (2 Copy) *</label>
+        <input type="file" id="birthcert" name="birthcert" accept=".pdf,.doc,.docx,.jpeg,.jpg,.png" multiple required>
+
+        <button type="submit">Submit Form</button>
+
+    </form>
+    </div>
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+        // Get all inputs inside the form
+        const inputs = this.querySelectorAll("input[required]");
+        let allFilled = true;
+
+        inputs.forEach(input => {
+        if (!input.value.trim()) {
+        allFilled = false;
+        input.style.border = "2px solid red"; // highlight empty fields
+        } else {
+        input.style.border = ""; // reset border if filled
+        }
+    });
+
+        if (!allFilled) {
+        event.preventDefault(); // stop form submission
+        alert("Please fill in all required fields.");
+      }
+    });
+  </script>
+</body>
+</html>
